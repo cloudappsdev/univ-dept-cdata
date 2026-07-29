@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+model Department {
+  id    String   @id @default(uuid())
+  name  String   @unique
+  code  String   @unique
+
+  courses     Course[]
+  instructors Instructor[]
+  students    Student[] @relation("MajorDepartment")
+}
+
+model Course {
+  id            String   @id @default(uuid())
+  department_id String
+  course_number String
+  title         String
+  description   String?
+  credits       Int
+
+  department Department @relation(fields: [department_id], references: [id])
+  sections   Section[]
+}
+
+model Instructor {
+  id            String   @id @default(uuid())
+  department_id String
+  first_name    String
+  last_name     String
+  email         String   @unique
+
+  department Department @relation(fields: [department_id], references: [id])
+  sections   Section[]
+}
+
+model Student {
+  id                  String   @id @default(uuid())
+  first_name          String
+  last_name           String
+  email               String   @unique
+  major_department_id String?
+
+  major_department Department? @relation("MajorDepartment", fields: [major_department_id], references: [id])
+  enrollments      Enrollment[]
+}
+
+model Section {
+  id            String   @id @default(uuid())
+  course_id     String
+  instructor_id String
+  term          String
+  section_number String
+  schedule      String?
+
+  course     Course     @relation(fields: [course_id], references: [id])
+  instructor Instructor @relation(fields: [instructor_id], references: [id])
+  enrollments Enrollment[]
+}
+
+model Enrollment {
+  id         String  @id @default(uuid())
+  student_id String
+  section_id String
+  grade      String?
+
+  student Student @relation(fields: [student_id], references: [id])
+  section Section @relation(fields: [section_id], references: [id])
+}
+
