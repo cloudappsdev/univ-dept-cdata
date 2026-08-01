@@ -1,14 +1,18 @@
+import { notFound } from "next/navigation";
+import { getDepartmentById } from "../../../lib/services/DepartmentDetail";
+import { DepartmentDetail } from "./DepartmentDetail";
+
 type Props = {
   params: Promise<{ id: string }>;
 };
 
 export default async function DepartmentDetailPage({ params }: Props) {
   const { id } = await params;
+  const department = await getDepartmentById(id);
 
-  return (
-    <main className="p-8">
-      <h1 className="text-2xl font-semibold">Department Details</h1>
-      <p className="mt-2 text-gray-600">Viewing department with id: {id}</p>
-    </main>
-  );
+  if (!department) {
+    notFound();
+  }
+
+  return <DepartmentDetail department={department} />;
 }
