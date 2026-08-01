@@ -8,6 +8,11 @@ export async function getCourseById(id: string) {
       sections: {
         include: {
           instructor: true,
+          enrollments: {
+            include: {
+              student: true,
+            },
+          },
         },
       },
     },
