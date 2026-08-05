@@ -12,10 +12,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@media (prefers-color-scheme: light) {
+  article a.text-xl.text-slate-900 {
+    color: rgb(78, 137, 214);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+  }
+
+  article a.text-xl.text-slate-900 {
+    color: green;
+  }
+
+  #dnamm {
+    color: white;
   }
 }
 
@@ -23,4 +37,31 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
+  .home-header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-byline {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .home-header {
+      color: #27ccf5;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .home-header {
+      color: #3026b5;
+    }
+  }
 }
