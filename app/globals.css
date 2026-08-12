@@ -65,3 +65,20 @@ body {
     }
   }
 }
+
+/* Detail-page headings: Department, Course, Instructor, Student, Section.
+   Targets the h1.text-slate-900 inside each page's `mb-6` header row.
+
+   Note the layer choice. Tailwind v4 declares
+       @layer theme, base, components, utilities;
+   and emits text-slate-900 into `utilities`. A later layer beats an earlier
+   one regardless of specificity, so a `components`-layer rule would always
+   lose to the utility. Inside `utilities`, normal specificity applies and
+   (0,2,1) beats the utility's (0,1,0). */
+@layer utilities {
+  @media (prefers-color-scheme: dark) {
+    div.mb-6 .text-slate-900 {
+      color: #f5f0c6;
+    }
+  }
+}

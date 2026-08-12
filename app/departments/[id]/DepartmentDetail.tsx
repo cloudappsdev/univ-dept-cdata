@@ -29,7 +29,7 @@ export function DepartmentDetail({
           <p className="text-sm uppercase tracking-[0.2em] text-slate-500">
             {department.code}
           </p>
-          <h1 id="dnamm" className="text-3xl font-semibold text-slate-900">
+          <h1 className="text-3xl font-semibold text-slate-900">
             {department.name}
           </h1>
         </div>

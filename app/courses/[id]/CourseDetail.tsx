@@ -1,3 +1,4 @@
+import styles from "./CourseDetail.module.css";
 import Link from "next/link";
 
 type CourseSection = {
