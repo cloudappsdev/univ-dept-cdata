@@ -39,7 +39,7 @@ export function DepartmentList({
                 >
                   {department.name}
                 </Link>
-                <p className="mt-1 text-sm uppercase tracking-[0.2em] text-slate-500">
+                <p className="mt-1 text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-white">
                   {department.code}
                 </p>
               </div>
@@ -48,7 +48,7 @@ export function DepartmentList({
               </div>
             </div>
 
-            <ul className="mt-4 grid gap-2 text-sm text-slate-700 sm:grid-cols-3">
+            <ul className="mt-4 grid gap-2 text-sm text-slate-700 sm:grid-cols-3 dark:text-white">
               <li>Courses: {department._count.courses}</li>
               <li>Instructors: {department._count.instructors}</li>
               <li>Students: {department._count.students}</li>

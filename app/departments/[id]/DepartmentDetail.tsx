@@ -26,7 +26,7 @@ export function DepartmentDetail({
     <main className="p-8">
       <div className="mb-6 flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-white">
             {department.code}
           </p>
           <h1 className="text-3xl font-semibold text-slate-900">
@@ -47,7 +47,7 @@ export function DepartmentDetail({
                 <li key={course.id}>
                   <Link
                     href={`/courses/${course.id}`}
-                    className="text-blue-600 hover:underline"
+                    className="text-blue-600 hover:underline dark:text-[#BBF3FC]"
                   >
                     {course.title}
                   </Link>
@@ -70,7 +70,7 @@ export function DepartmentDetail({
                 <li key={instructor.id}>
                   <Link
                     href={`/instructors/${instructor.id}`}
-                    className="text-blue-600 hover:underline"
+                    className="text-blue-600 hover:underline dark:text-[#BBF3FC]"
                   >
                     {instructor.first_name} {instructor.last_name}
                   </Link>
@@ -90,7 +90,7 @@ export function DepartmentDetail({
                 <li key={student.id}>
                   <Link
                     href={`/students/${student.id}`}
-                    className="text-blue-600 hover:underline"
+                    className="text-blue-600 hover:underline dark:text-[#BBF3FC]"
                   >
                     {student.first_name} {student.last_name}
                   </Link>

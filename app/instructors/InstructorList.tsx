@@ -43,16 +43,16 @@ export function InstructorList({
                 >
                   {instructor.first_name} {instructor.last_name}
                 </Link>
-                <p className="mt-1 text-sm text-slate-600">
+                <p className="mt-1 text-sm text-slate-600 dark:text-white">
                   {instructor.email}
                 </p>
               </div>
-              <div className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
+              <div className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700 dark:bg-slate-700 dark:text-white">
                 {instructor._count.sections} sections
               </div>
             </div>
 
-            <div className="mt-3 text-sm text-slate-700">
+            <div className="mt-3 text-sm text-slate-700 dark:text-white">
               <span className="font-medium">Department:</span>{" "}
               <Link
                 href={`/departments/${instructor.department.id}`}
@@ -60,7 +60,7 @@ export function InstructorList({
               >
                 {instructor.department.name}
               </Link>
-              <span className="ml-2 text-slate-500">
+              <span className="ml-2 text-slate-500 dark:text-white">
                 ({instructor.department.code})
               </span>
             </div>

@@ -40,7 +40,7 @@ export function StudentDetail({ student }: { student: StudentDetailData }) {
     <main className="p-8">
       <div className="mb-6 flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-white">
             Student
           </p>
           <h1 className="text-3xl font-semibold text-slate-900">
@@ -53,8 +53,8 @@ export function StudentDetail({ student }: { student: StudentDetailData }) {
       </div>
 
       <section className="mb-6 rounded-xl border border-slate-200 p-4">
-        <p className="text-slate-700">Email: {student.email}</p>
-        <p className="mt-2 text-slate-700">
+        <p className="text-slate-700 dark:text-white">Email: {student.email}</p>
+        <p className="mt-2 text-slate-700 dark:text-white">
           Major:{" "}
           {student.major_department ? (
             <Link

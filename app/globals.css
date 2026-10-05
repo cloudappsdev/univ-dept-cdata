@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
+/* Theme is driven by <html data-theme="light|dark">, set before first paint by
+   the inline script in app/layout.tsx and switched by <ThemeToggle />.
+   This also makes Tailwind's `dark:` variant follow the toggle instead of the
+   OS `prefers-color-scheme` media query. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -12,18 +19,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: light) {
-  article a.text-xl.text-slate-900 {
-    color: rgb(78, 137, 214);
-  }
+[data-theme="light"] article a.text-xl.text-slate-900 {
+  color: rgb(78, 137, 214);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  color-scheme: dark;
+}
 
+[data-theme="dark"] {
   article a.text-xl.text-slate-900 {
     color: green;
   }
@@ -53,17 +59,22 @@ body {
     margin-bottom: 2rem;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .home-header {
-      color: #27ccf5;
-    }
+  .theme-toggle {
+    border-color: color-mix(in srgb, var(--foreground) 25%, transparent);
+    cursor: pointer;
   }
 
-  @media (prefers-color-scheme: light) {
-    .home-header {
-      color: #3026b5;
-    }
+  .theme-toggle:hover {
+    background: color-mix(in srgb, var(--foreground) 8%, transparent);
   }
+}
+
+[data-theme="dark"] .home-header {
+  color: #27ccf5;
+}
+
+[data-theme="light"] .home-header {
+  color: #3026b5;
 }
 
 /* Detail-page headings: Department, Course, Instructor, Student, Section.
@@ -74,11 +85,9 @@ body {
    and emits text-slate-900 into `utilities`. A later layer beats an earlier
    one regardless of specificity, so a `components`-layer rule would always
    lose to the utility. Inside `utilities`, normal specificity applies and
-   (0,2,1) beats the utility's (0,1,0). */
+   (0,3,1) beats the utility's (0,1,0). */
 @layer utilities {
-  @media (prefers-color-scheme: dark) {
-    div.mb-6 .text-slate-900 {
-      color: #f5f0c6;
-    }
+  [data-theme="dark"] div.mb-6 .text-slate-900 {
+    color: #f5f0c6;
   }
 }

@@ -42,7 +42,7 @@ export function CourseDetail({ course }: { course: CourseDetailData }) {
     <main className="p-8">
       <div className="mb-6 flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-slate-500">
+          <p className="text-sm uppercase tracking-[0.2em] text-slate-500 dark:text-white">
             {course.department.code}
           </p>
           <h1 className="text-3xl font-semibold text-slate-900">
@@ -55,13 +55,15 @@ export function CourseDetail({ course }: { course: CourseDetailData }) {
       </div>
 
       <section className="mb-6 rounded-xl border border-slate-200 p-4">
-        <p className="text-sm font-medium text-slate-600">
+        <p className="text-sm font-medium text-slate-600 dark:text-white">
           {course.course_number}
         </p>
-        <p className="mt-2 text-slate-700">
+        <p className="mt-2 text-slate-700 dark:text-white">
           {course.description ?? "No description provided."}
         </p>
-        <p className="mt-3 text-sm text-slate-600">Credits: {course.credits}</p>
+        <p className="mt-3 text-sm text-slate-600 dark:text-white">
+          Credits: {course.credits}
+        </p>
         <Link
           href={`/departments/${course.department.id}`}
           className="mt-3 inline-block text-blue-600 hover:underline"
